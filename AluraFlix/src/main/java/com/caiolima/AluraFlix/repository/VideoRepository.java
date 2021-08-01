@@ -3,9 +3,9 @@ package com.caiolima.AluraFlix.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.caiolima.AluraFlix.model.Videos;
+import com.caiolima.AluraFlix.model.Video;
 
 @Repository
-public interface VideosRepository extends JpaRepository<Videos, Long> {
+public interface VideoRepository extends JpaRepository<Video, Long> {
 	//TODO estratégias de select
 }
