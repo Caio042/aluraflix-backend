@@ -29,4 +29,6 @@ public class Video {
 	@Column (nullable = false, unique = true)
 	private String url;
 
+	@ManyToOne (fetch = FetchType.LAZY)
+	private Categoria categoriaId;
 }
