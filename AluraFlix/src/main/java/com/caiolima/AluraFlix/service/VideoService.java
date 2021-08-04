@@ -39,7 +39,7 @@ public class VideoService {
 
     public ResponseEntity<VideoDTO> publicar(VideoDTO videoDTO) {
 
-        Video video = repositorio.save( videoMapper.toModel(videoDTO));
+        Video video = repositorio.save(videoMapper.toModel(videoDTO));
         return ResponseEntity.status(HttpStatus.CREATED).body(videoMapper.toDTO(video));
     }
 
@@ -50,13 +50,15 @@ public class VideoService {
                             .mensagem("Video de id " + id + " deletado com sucesso")
                             .build());
                 }
-            ).orElse(ResponseEntity.notFound().build());
+            ).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(MensagemDTO
+                .builder().mensagem("Video de id " + id + " não encontrado")
+                .build()));
     }
 
 
     public ResponseEntity<VideoDTO> atualizar(VideoDTO videoDTO) {
 
-        Video video = repositorio.save( videoMapper.toModel(videoDTO));
-        return ResponseEntity.status(HttpStatus.CREATED).body(videoMapper.toDTO(video));
+        Video video = repositorio.save(videoMapper.toModel(videoDTO));
+        return ResponseEntity.status(HttpStatus.OK).body(videoMapper.toDTO(video));
     }
 }
