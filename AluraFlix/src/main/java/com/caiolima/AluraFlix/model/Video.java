@@ -18,7 +18,7 @@ public class Video {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	
 	@Column (nullable = false)
 	private String titulo;
@@ -30,5 +30,6 @@ public class Video {
 	private String url;
 
 	@ManyToOne (fetch = FetchType.LAZY)
+	@JoinColumn (name = "categoriaId")
 	private Categoria categoriaId;
 }

@@ -1,5 +1,6 @@
 package com.caiolima.AluraFlix.dto;
 
+import com.caiolima.AluraFlix.model.Categoria;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,4 +31,5 @@ public class VideoDTO {
 	@Size (max = 1000)
 	private String url;
 
+	private Categoria categoria;
 }

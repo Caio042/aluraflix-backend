@@ -52,6 +52,7 @@ public class CategoriaService {
             return ResponseEntity.ok(MensagemDTO.builder()
                     .mensagem("Categoria de id " + id + " deletado com sucesso")
                     .build());})
+
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body(MensagemDTO.builder()
                                 .mensagem("Categoria de id " + id + " não encontrada")
