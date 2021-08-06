@@ -19,36 +19,36 @@ public class CategoriaService {
     private final CategoriaMapper mapper = CategoriaMapper.INSTANCE;
 
     @Autowired
-    private CategoriaRepository repository;
+    private CategoriaRepository repositorio;
 
     public ResponseEntity<List<CategoriaDTO>> buscarTodos() {
-        return ResponseEntity.ok(repository.findAll()
+        return ResponseEntity.ok(repositorio.findAll()
                 .stream().map(mapper::toDTO)
                 .collect(Collectors.toList()));
     }
 
-    public ResponseEntity<CategoriaDTO> buscarPorId(long id) {
-        return repository.findById(id).map(categoria -> ResponseEntity.ok(mapper.toDTO(categoria)))
+    public ResponseEntity<CategoriaDTO> buscarPorId(Long id) {
+        return repositorio.findById(id).map(categoria -> ResponseEntity.ok(mapper.toDTO(categoria)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
 
     public ResponseEntity<CategoriaDTO> criarCategoria(CategoriaDTO categoriaDTO) {
 
-        Categoria categoria = mapper.toModel(categoriaDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toDTO(repository.save(categoria)));
+        Categoria categoria = repositorio.save(mapper.toModel(categoriaDTO));
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toDTO(categoria));
     }
 
 
     public ResponseEntity<CategoriaDTO> atualizar(CategoriaDTO categoriaDTO) {
-        Categoria categoria = mapper.toModel(categoriaDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(mapper.toDTO(repository.save(categoria)));
+        Categoria categoria = repositorio.save(mapper.toModel(categoriaDTO));
+        return ResponseEntity.status(HttpStatus.OK).body(mapper.toDTO(categoria));
     }
 
 
-    public ResponseEntity<MensagemDTO> deletar(long id) {
-        return repository.findById(id).map(categoria -> {
-            repository.delete(categoria);
+    public ResponseEntity<MensagemDTO> deletar(Long id) {
+        return repositorio.findById(id).map(categoria -> {
+            repositorio.delete(categoria);
             return ResponseEntity.ok(MensagemDTO.builder()
                     .mensagem("Categoria de id " + id + " deletado com sucesso")
                     .build());})

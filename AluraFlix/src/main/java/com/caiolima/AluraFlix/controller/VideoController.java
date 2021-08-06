@@ -26,7 +26,7 @@ public class VideoController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<VideoDTO> buscarPorId(@PathVariable long id){
+	public ResponseEntity<VideoDTO> buscarPorId(@PathVariable Long id){
 		return service.buscarPorId(id);
 	}
 
@@ -41,7 +41,7 @@ public class VideoController {
 	}
 
 	@DeleteMapping ("/{id}")
-	public ResponseEntity <MensagemDTO> deletar (@PathVariable long id){
+	public ResponseEntity <MensagemDTO> deletar (@PathVariable Long id){
 		return service.deletar(id);
 	}
 

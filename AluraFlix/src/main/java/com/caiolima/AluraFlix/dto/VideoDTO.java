@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.URL;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -16,7 +17,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class VideoDTO {
 
-	private long id;
+	private Long id;
 	
 	@NotBlank
 	@Size (max = 30)
@@ -31,5 +32,5 @@ public class VideoDTO {
 	@Size (max = 1000)
 	private String url;
 
-	private Categoria categoria;
+	private Long categoriaId;
 }

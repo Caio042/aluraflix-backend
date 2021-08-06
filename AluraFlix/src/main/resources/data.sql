@@ -14,7 +14,6 @@ titulo varchar(255) not null,
 descricao varchar(255) not null,
 url varchar(255) not null,
 categoria_id bigint,
-constraint UK_digi2rtv8554b5qqhht6wh4e2 unique (url),
 constraint FK2b3odso8ggtewt0ijl25lbdy foreign key (categoria_id) references tb_categoria (id),
 primary key (id)) engine=InnoDB;
 

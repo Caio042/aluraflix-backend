@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class CategoriaDTO {
 
-    private long id;
+    private Long id;
 
     @NotBlank (message = "O campo é obrigatório")
     @Size (min = 5, max = 30)
@@ -25,4 +25,6 @@ public class CategoriaDTO {
     @Size (min = 2, max = 10)
     // Todo pattern
     private String cor;
+
+    private final Long categoriaDefault = 1L;
 }

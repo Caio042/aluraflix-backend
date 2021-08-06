@@ -24,7 +24,7 @@ public class CategoriaController {
     }
 
     @GetMapping ("/{id}")
-    public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable long id){
+    public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable Long id){
         return service.buscarPorId(id);
     }
 
@@ -39,7 +39,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping ("/{id}")
-    public ResponseEntity<MensagemDTO> deletar(@PathVariable long id){
+    public ResponseEntity<MensagemDTO> deletar(@PathVariable Long id){
         return service.deletar(id);
     }
 }
