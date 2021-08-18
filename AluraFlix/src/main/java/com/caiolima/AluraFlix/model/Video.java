@@ -2,10 +2,7 @@ package com.caiolima.AluraFlix.model;
 
 import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Entity
@@ -14,10 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode (onlyExplicitlyIncluded = true)
 public class Video {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@EqualsAndHashCode.Include
 	private Long id;
 	
 	@Column (nullable = false)
@@ -32,4 +31,6 @@ public class Video {
 	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn (name = "categoria_id")
 	private Categoria categoria;
+
+
 }

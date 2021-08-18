@@ -33,4 +33,5 @@ public class VideoDTO {
 	private String url;
 
 	private Long categoriaId;
+
 }

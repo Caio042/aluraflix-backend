@@ -5,7 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import com.caiolima.AluraFlix.model.Video;
 
+import java.util.List;
+
 @Repository
 public interface VideoRepository extends JpaRepository<Video, Long> {
-	//TODO estratégias de select
+
+    public List<Video> findAllByTituloContainingIgnoreCase(String titulo);
 }

@@ -1,6 +1,7 @@
 package com.caiolima.AluraFlix.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.caiolima.AluraFlix.dto.MensagemDTO;
 import com.caiolima.AluraFlix.dto.VideoDTO;
@@ -21,8 +22,11 @@ public class VideoController {
 	private VideoService service;
 
 	@GetMapping
-	public ResponseEntity<List<VideoDTO>> buscarTodos(){
-		return service.buscarTodos();
+	public ResponseEntity<List<VideoDTO>> buscarTodos(@RequestParam (name = "search", required = false)
+																  Optional<String> titulo){
+
+		return titulo.map(titulolmb -> ResponseEntity.ok(service.buscarPorTitulo(titulolmb)))
+				.orElse(ResponseEntity.ok(service.buscarTodos()));
 	}
 	
 	@GetMapping("/{id}")
@@ -44,5 +48,4 @@ public class VideoController {
 	public ResponseEntity <MensagemDTO> deletar (@PathVariable Long id){
 		return service.deletar(id);
 	}
-
 }

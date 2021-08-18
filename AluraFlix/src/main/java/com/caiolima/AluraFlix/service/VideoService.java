@@ -27,11 +27,11 @@ public class VideoService {
 
     private final VideoMapper mapper = VideoMapper.INSTANCE;
 
-    public ResponseEntity<List<VideoDTO>> buscarTodos(){
+    public List<VideoDTO> buscarTodos(){
 
-        return ResponseEntity.ok(repositorio.findAll()
+        return repositorio.findAll()
                 .stream().map(mapper::toDTO)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList());
     }
 
     public ResponseEntity<VideoDTO> buscarPorId(Long id){
@@ -88,5 +88,11 @@ public class VideoService {
         videoDTO = mapper.toDTO(video);
         videoDTO.setCategoriaId(video.getCategoria().getId());
         return ResponseEntity.ok(videoDTO);
+    }
+
+    public List<VideoDTO> buscarPorTitulo(String titulo) {
+        return repositorio.findAllByTituloContainingIgnoreCase(titulo).stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
 }
